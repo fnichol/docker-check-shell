@@ -1,6 +1,6 @@
 check_task:
   container:
-    image: fnichol/check-shell
+    image: fnichol/check-shell:latest
   check_script: make check
 
 docker_builder:
