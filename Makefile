@@ -2,6 +2,13 @@ SH_SRC := $(shell find . -type f -name '*.sh')
 DOCKERFILE_SRC := $(shell find . -type f -name 'Dockerfile*'  -o -name 'Dockerfile.*')
 CHECK_TOOLS = shellcheck hadolint shfmt
 
+IMAGE := $${IMAGE_NAME:-fnichol/check-shell}
+
+build: ## Builds Docker image
+	@echo "--- $@"
+	./build.sh $(IMAGE) $${CIRRUS_TAG:-$${TAG:-dev}} latest
+.PHONY: build
+
 prepush: check ## Runs all checks/test required before pushing
 	@echo "--- $@"
 	@echo "all prepush targets passed, okay to push."

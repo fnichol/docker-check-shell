@@ -11,7 +11,7 @@ docker_builder:
     IMAGE_NAME: fnichol/check-shell
     DOCKER_USERNAME: ENCRYPTED[a293563f5cdfc98dcd59d5a8cb9582d72ff34e8b2788f36c92c59b0b8cf2d11a9155554cc7439a9841dbceda3759383d]
     DOCKER_PASSWORD: ENCRYPTED[69a1a55073877b24aafd7bfd0d2fe9e6715d6c0e8c1193db0a25baec8566e4672f3ebeacebd5461da6e5fb3b557a9337]
-  build_script: ./build.sh "$IMAGE_NAME" "$CIRRUS_TAG" latest
+  build_script: make build
   login_script: >
     echo "$DOCKER_PASSWORD" \
       | docker login --username "$DOCKER_USERNAME" --password-stdin
