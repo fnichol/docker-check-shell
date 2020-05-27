@@ -2,7 +2,7 @@ FROM mvdan/shfmt:v2.6.4 as shfmt
 FROM koalaman/shellcheck:v0.7.1 as shellcheck
 FROM hadolint/hadolint:v1.17.3 as hadolint
 
-FROM alpine:3.10
+FROM alpine:3.11
 
 ARG NAME
 ARG VERSION
