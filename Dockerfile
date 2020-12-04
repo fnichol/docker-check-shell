@@ -1,4 +1,4 @@
-FROM mvdan/shfmt:v3.2.0 as shfmt
+FROM mvdan/shfmt:v3.2.1 as shfmt
 FROM koalaman/shellcheck:v0.7.1 as shellcheck
 FROM hadolint/hadolint:v1.19.0 as hadolint
 
