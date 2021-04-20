@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-# shellcheck shell=sh disable=SC2039
+# shellcheck shell=sh disable=SC2039,SC3043
 
 _print_usage() {
   local program="$1"
