@@ -23,6 +23,15 @@ hadolint: ## Checks Dockerfiles for linting rules
 .PHONY: hadolint
 
 test:
+	@echo "--- $@"
+	@if [ -f /.dockerenv ]; then \
+		$(MAKE) check; \
+	else \
+		$(MAKE) build; \
+		docker run --rm -ti -v "$$(pwd):/src" -w /src \
+			$(IMAGE) make versions test; \
+	fi
+
 .PHONY: test
 
 tag: ## Create a new release Git tag
@@ -36,3 +45,13 @@ tag: ## Create a new release Git tag
 update-toc: ## Update README.md table of contents
 	markdown-toc -i README.md
 .PHONY: update-toc
+
+versions: ## Prints the versions of key tools
+	@echo "--- $@"
+	@echo "  - shfmt version"
+	@shfmt --version | sed 's/^/        /'
+	@echo "  - ShellCheck version"
+	@shellcheck --version | sed 's/^/        /'
+	@echo "  - hadolint version"
+	@hadolint --version | sed 's/^/        /'
+.PHONY: versions
