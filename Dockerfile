@@ -1,6 +1,6 @@
 FROM mvdan/shfmt:v3.3.1 as shfmt
 FROM koalaman/shellcheck:v0.7.2 as shellcheck
-FROM hadolint/hadolint:2.6.0 as hadolint
+FROM hadolint/hadolint:2.7.0 as hadolint
 
 FROM alpine:3.12
 
